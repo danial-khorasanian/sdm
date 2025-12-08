@@ -9,11 +9,11 @@ import pickle
 import time
 
 # ────────────────────────────────────────────────
-# REINFORCE for Inverted Pendulum
+# Train REINFORCE for Inverted Pendulum
 # ────────────────────────────────────────────────
 def train_reinforce_inverted_pendulum(params):
     """
-    Training REINFORCE algorithm for the Inverted Pendulum environment.
+    Training REINFORCE for the Inverted Pendulum environment.
     """
 
     # Set device
@@ -43,7 +43,7 @@ def train_reinforce_inverted_pendulum(params):
             return self.mean(x), self.log_std.exp()
 
     # ─────────────────────────────────────────────────────────────
-    # Training parameters
+    # Training hyperparameters
     # ─────────────────────────────────────────────────────────────
     GAMMA = params['GAMMA']
     MAX_STEPS = params['MAX_STEPS']
@@ -151,11 +151,11 @@ def train_reinforce_inverted_pendulum(params):
 
 
 # ────────────────────────────────────────────────
-# A2C for Inverted Pendulum
+# Train A2C for Inverted Pendulum
 # ────────────────────────────────────────────────
 def train_a2c_inverted_pendulum(params):
     """
-    Training Advantage Actor-Critic (A2C) for the Inverted Pendulum environment.
+    Training A2C for the Inverted Pendulum environment.
     """
 
     # ────────────────────────────────────────────────
@@ -356,11 +356,11 @@ def train_a2c_inverted_pendulum(params):
 
 
 # ────────────────────────────────────────────────
-# PPO for Inverted Pendulum
+# Train PPO-clipping for Inverted Pendulum
 # ────────────────────────────────────────────────
 def train_ppo_inverted_pendulum(params):
     """
-    Proximal Policy Optimization (PPO) implementation for the Inverted Pendulum environment.
+    Training PPO-clipping implementation for the Inverted Pendulum environment.
     """
     # ────────────────────────────────────────────────
     # Hyperparameters
@@ -523,7 +523,7 @@ def train_ppo_inverted_pendulum(params):
             advs = (advs - advs.mean()) / (advs.std() + 1e-8)
 
             # ────────────────────────────────────────────────
-            # 🔁 PPO Updates
+            # PPO Updates
             # ────────────────────────────────────────────────
             for _ in range(EPOCHS):
                 idx = torch.randperm(BATCH_SIZE)
